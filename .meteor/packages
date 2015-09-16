@@ -11,3 +11,5 @@ ewall:foundation
 iron:router
 sacha:spin
 natestrauser:font-awesome
+cfs:standard-packages
+cfs:filesystem
