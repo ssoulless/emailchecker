@@ -3,5 +3,10 @@
 	<span class="button">
 		<input class="file fileInput" type="file" />
 	</span>
+	<ul>
+		{{#each upload}}
+			<li>{{name}}</li>
+		{{/each}}
+	</ul>
 	<a href="#" class="button button-primary analyze">Analyze</a>
 </template>
