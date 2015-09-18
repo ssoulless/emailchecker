@@ -1,12 +1,23 @@
 <template name="index">
-	<h1>UPLOAD A FILE</h1>
-	<span class="button">
-		<input class="file fileInput" type="file" />
-	</span>
-	<ul>
-		{{#each upload}}
-			<li>{{name}}</li>
-		{{/each}}
-	</ul>
-	<a href="#" class="button button-primary analyze">Analyze</a>
+	<div class="row text-center">
+		<div class="small-8 large-5 columns small-centered large-centered">
+			<h1>UPLOAD A FILE</h1>
+			<span>
+				<input class="file fileInput" type="file" />
+			</span>
+			<div class="small-12 columns">
+				<section class="block-list">
+					<header>Uploaded file</header>
+					<ul>
+						{{#each upload}}
+							<li>{{name}}</li>
+						{{/each}}
+					</ul>
+				</section>
+			</div>
+			<div class="small-12">
+				<a href="#" class="button button-primary expand  radius analyze">Analyze</a>
+			</div>
+		</div>
+	</div>
 </template>
