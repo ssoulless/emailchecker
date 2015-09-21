@@ -14,8 +14,18 @@ Template.index.events({
 		});
 	},
 	'click .analyze': function(e, t) {
-		Messages.send('info','Ups this is not ready yet')
-		//var emails = Assets.getText('seeds/'+Uploads.find({sort: {createdAt: -1}, limit: 1}).fetch()[0].name)
+		if(Session.get('currentUpload')){
+			Messages.send('info','Ups this is not ready yet');
+			Meteor.call('getRootPath');
+			Meteor.call('readLastUpload', function(err, result){
+				if (err){
+					console.log(err);
+				}
+				
+			});
+		}else{
+			Messages.send('warning', 'First Upload some file');
+		}
 		//TODO: leer el archivo en un parser de texto plano
 		//TODO: crear funcionalidades
 	}

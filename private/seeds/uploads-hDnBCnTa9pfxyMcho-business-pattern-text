@@ -1,0 +1,49 @@
+Today let's talk about business patterns.
+We define a business pattern as generalized solutions that can be implemented and applied in a problem situation (that's kind of context), and thereby eliminate one or more of the inherent problems. Patterns can be considered prototypes for production.
+
+Patterns are part of how you define your business architecture: 
+
+    They reflect common solutions to common problems.
+    Patterns help maintain an architectural style throughout the organization.
+    They are a simple way of capturing experiences.
+
+This time we'll focus in a business pattern called Business event-result history pattern.
+
+This pattern works in a high level, it works at the business level.
+
+it is suitable for problem domains where you need to maintain a history of business events and their results
+It is most often used to the well known enterprise resource planning systems or ERP systems.
+
+The business event-result history pattern is used to track significant business events and then to connect these events to their results
+
+Capturing the different business events, along with their results, helps you make better business decisions
+
+The goal of this pattern is to enable you to keep a record of all important business events, which are typically described with attributes such as description, purpose, and result.
+
+Well I know all this theory is boring, let's see a very basic example:
+
+Imagine you are the CEO of a big store of TV's, you give credit, so people can take a tv and pay it through monthly dues, the only thing you know about your clients is their basic information and their shopping activity. You see that you are losing money because many of your clients pay late or they are back with the dues.
+
+And this is a common behaviour, you see it happens over and over...
+
+But the big questions are:
+	Which clients pay late their dues?
+	with which fequency those clients pay late?
+	is the first time they are back with the dues or it is happening repeatedly
+	Should I give him credit agian?
+	Should I discontinue relationship with that client or not?
+
+The business event-result history pattern can help you discontinue a relationship with a customer because of poor payment history tracking simple events like: order placed, late payment, montly due received on time, and so on.
+
+In the Business event-result history pattern there are 5 participants:
+	The business event itself
+	The product: which entity or entities of the busines is this entity related? (in our example this may be the TV's)
+	Party: Which roles are palying with this event (in our example would be seller and buyer)
+	Contract: This means the deal or decision between the parties (In our case is the credit itself the deal is that the buyer will pay dues monthly until cancel the total cost of the TV)
+	Statement: it is just the expression of a contract, in our case can be the invoice and the promissory note
+
+
+The only thing you need to specify in your system is which business events are going to be tracked. Using This pattern will allow a system to Analyse data and convert to information, that's called "Business Intelligence", Organizations can take decisions based on data, that's the principal goal of this pattern.
+
+This was just a random video we had to do for a college homework, but we have more fun stuff in railskarate.com, See you soon in a next video, Bye Bye!
+
