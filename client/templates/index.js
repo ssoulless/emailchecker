@@ -25,7 +25,12 @@ Template.index.events({
 				parsedEmailsAndOwnership = _.map(parsedEmailsAndOwnership, function(emailAndOwner){
 					return emailAndOwner.split('/');
 				});
-				console.log(parsedEmailsAndOwnership);
+				Meteor.call('emailsPerDomain', parsedEmailsAndOwnership, function(err, result){
+					if(err){
+						console.log(err);
+					}
+					console.log(result);
+				});
 			});
 		}else{
 			Messages.send('warning', 'First Upload some file');
