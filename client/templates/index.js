@@ -19,9 +19,13 @@ Template.index.events({
 			Meteor.call('getRootPath');
 			Meteor.call('readLastUpload', function(err, result){
 				if (err){
-					console.log(err);
+					return console.log(err);
 				}
-				
+				parsedEmailsAndOwnership = result.split('\n');
+				parsedEmailsAndOwnership = _.map(parsedEmailsAndOwnership, function(emailAndOwner){
+					return emailAndOwner.split('/');
+				});
+				console.log(parsedEmailsAndOwnership);
 			});
 		}else{
 			Messages.send('warning', 'First Upload some file');
