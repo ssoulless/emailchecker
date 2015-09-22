@@ -29,7 +29,8 @@ Template.index.events({
 					if(err){
 						console.log(err);
 					}
-					console.log(result);
+					Session.set('emailsPerDomain', result);
+					Router.go('analysisResult');
 				});
 			});
 		}else{
