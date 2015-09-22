@@ -1,4 +1,7 @@
 Template.index.events({
+	'click .disabled': function(e, t) {
+		return false;
+	},
 	'change .fileInput': function (e, t) {
 		FS.Utility.eachFile(e, function(file){
 			var fileObj = new FS.File(file)
@@ -15,7 +18,8 @@ Template.index.events({
 	},
 	'click .analyze': function(e, t) {
 		if(Session.get('currentUpload')){
-			Messages.send('info','Ups this is not ready yet');
+			//Disable button while processing
+			$(e.currentTarget).addClass('disabled');
 			Meteor.call('getRootPath');
 			Meteor.call('readLastUpload', function(err, result){
 				if (err){
