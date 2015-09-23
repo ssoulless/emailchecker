@@ -24,5 +24,8 @@ Meteor.methods({
 			});
 		});
 		return resultObject;
+	},
+	emailFacultad: function(emails){
+		
 	}
 });
