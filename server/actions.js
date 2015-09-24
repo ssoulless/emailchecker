@@ -44,15 +44,28 @@ Meteor.methods({
 			emailFacultadDomains = _.uniq(emailFacultadDomains);
 
 			var filteredEmailsFacultad;
+			domainsAndemails = [];
 			_.each(emailFacultadDomains, function(facultadDomain){
 				filteredEmailsFacultad = _.filter(filteredEmails, function(facultadEmail){
 					return facultadEmail[0].replace(/.*@/, "") === facultadDomain;
 				});
-			});	
+				domainsAndemails.push({
+					domain: facultadDomain,
+					emails: filteredEmailsFacultad.length
+				});
+			});
+
+			domainsAndemails.sort(function(a,b) {
+				if(a.emails < b.emails)
+					return 1;
+				if(a.emails > b.emails)
+					return -1;
+				return 0;				
+			});
 
 			resultObject.push({
 				facultad: facultad,
-				emails: filteredEmailsFacultad.length
+				domain: domainsAndemails.shift().domain
 			});
 		});
 		return resultObject;

@@ -39,7 +39,13 @@ Template.index.events({
 							console.log(err);
 						}
 						Session.set('emailsPerDomain', result);
-						Router.go('analysisResult');
+						Meteor.call('emailFacultad', parsedEmailsAndOwnership, function(err, result){
+							if(err){
+								console.log(err);
+							}
+							Session.set('emailFacultad', result);
+							Router.go('analysisResult');
+						});
 					});
 			    }
 			});
