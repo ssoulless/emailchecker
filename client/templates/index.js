@@ -20,22 +20,28 @@ Template.index.events({
 		if(Session.get('currentUpload')){
 			//Disable button while processing
 			$(e.currentTarget).addClass('disabled');
-			Meteor.call('getRootPath');
-			Meteor.call('readLastUpload', function(err, result){
-				if (err){
-					return console.log(err);
-				}
-				parsedEmailsAndOwnership = result.split('\n');
-				parsedEmailsAndOwnership = _.map(parsedEmailsAndOwnership, function(emailAndOwner){
-					return emailAndOwner.split('/');
-				});
-				Meteor.call('emailsPerDomain', parsedEmailsAndOwnership, function(err, result){
-					if(err){
-						console.log(err);
-					}
-					Session.set('emailsPerDomain', result);
-					Router.go('analysisResult');
-				});
+			var upload = Uploads.find({}, {sort: {uploadedAt: -1}, limit: 1}).fetch()[0];
+			HTTP.get(upload.url(),function(err,result){
+			    // this will be async obviously
+			    if ( err ) console.log("Error "+err);
+			    else {
+			      	content = result.content; // the contents of the file
+			      	parsedEmailsAndOwnership = content.split('\n');
+					parsedEmailsAndOwnership = _.map(parsedEmailsAndOwnership, function(emailAndOwner){
+						return emailAndOwner.split('/');
+					});
+					
+					console.log(parsedEmailsAndOwnership);
+					//Quickfix, delete last blank space
+					parsedEmailsAndOwnership.pop();
+					Meteor.call('emailsPerDomain', parsedEmailsAndOwnership, function(err, result){
+						if(err){
+							console.log(err);
+						}
+						Session.set('emailsPerDomain', result);
+						Router.go('analysisResult');
+					});
+			    }
 			});
 		}else{
 			Messages.send('warning', 'First Upload some file');

@@ -16,3 +16,4 @@ cfs:filesystem
 ostrio:meteor-root
 mrt:flash-messages
 datariot:foundation-flash-messages
+http
