@@ -20,7 +20,23 @@
 			</table>
 		</div>
 		<div class="small-12 large-6 columns">
-			<h2>Next feature comming soon...</h2>
+			<h2>Facultad Domain</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Facultad</th>
+						<th>Domain</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each emailFacultad}}
+						<tr>
+							<td>{{facultad}}</td>
+							<td>{{domain}}</td>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>	
 		</div>
 	</div>
 	<div class="row text-center">
