@@ -17,7 +17,6 @@ Meteor.methods({
 				domain: domain,
 				emails: filteredEmails.length
 			});
-
 		});
 		emialAndemail.sort(function a,b){
 			if(a.emails < b.emails)
