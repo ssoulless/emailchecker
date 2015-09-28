@@ -8,11 +8,12 @@ Meteor.methods({
 		emailDomains.sort();
 		emailDomains = _.uniq(emailDomains);
 		resultObject = [];
+		emialAndemail =[];
 		_.each(emailDomains, function(domain){
 			var filteredEmails = _.filter(emails, function(emailSet){
 				return emailSet[0].replace(/.*@/, "") === domain;
 			});
-			resultObject.push({
+			emialAndemail.push({
 				domain: domain,
 				emails: filteredEmails.length
 			});
