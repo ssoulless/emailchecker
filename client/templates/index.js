@@ -8,11 +8,11 @@ Template.index.events({
 			Session.set('currentUpload', true);
 			Uploads.insert(fileObj, function(err, result){
 				if (err) {
-				Messages.send('alert', err.reason);
+				FlashMessages.sendError(err.reason);
 				console.log(err.reason);
 				return;
 				}
-				Messages.send('info', 'File uploaded')
+				FlashMessages.sendInfo('File uploaded');
 			});
 		});
 	},
@@ -50,7 +50,7 @@ Template.index.events({
 			    }
 			});
 		}else{
-			Messages.send('warning', 'First Upload some file');
+			FlashMessages.sendWarning('First Upload some file');
 		}
 		//TODO: leer el archivo en un parser de texto plano
 		//TODO: crear funcionalidades
