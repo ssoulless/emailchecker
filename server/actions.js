@@ -13,7 +13,6 @@ Meteor.methods({
 				return emailSet[0].replace(/.*@/, "") === domain;
 			});
 			filteredEmails.sort();
-			filteredEmails = _.uniq(filteredEmails);
 			resultObject.push({
 				domain: domain,
 				emails: filteredEmails.length
