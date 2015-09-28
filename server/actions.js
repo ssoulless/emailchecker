@@ -17,6 +17,13 @@ Meteor.methods({
 				emails: filteredEmails.length
 			});
 		});
+		resultObject.sort(function(a, b) {
+			if (a.emails < b.emails)
+				return 1;
+			if (a.emails > b.emails)
+				return -1;
+			return 0;
+		});
 		return resultObject;
 	},
 	emailFacultad: function(emails){
