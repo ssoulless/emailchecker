@@ -8,15 +8,27 @@ Meteor.methods({
 		emailDomains.sort();
 		emailDomains = _.uniq(emailDomains);
 		resultObject = [];
+		emialAndemail =[];
 		_.each(emailDomains, function(domain){
 			var filteredEmails = _.filter(emails, function(emailSet){
 				return emailSet[0].replace(/.*@/, "") === domain;
 			});
-			filteredEmails.sort();
-			resultObject.push({
+			emialAndemail.push({
 				domain: domain,
 				emails: filteredEmails.length
 			});
+
+		});
+		emialAndemail.sort(function a,b){
+			if(a.emails < b.emails)
+				return 1;
+			if(a.emails > b.emails)
+				return -1;
+			return 0;
+			}
+		resultObject.push({
+			domain: domain,
+			emails: emialAndemail.shift().domain
 		});
 		return resultObject;
 	},
